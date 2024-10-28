@@ -4,10 +4,10 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Router>
+      {/* <Router>
         <Route/>
         <Route/>
-      </Router>
+      </Router> */}
     </div>
   );
 }
