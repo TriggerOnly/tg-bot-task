@@ -8,6 +8,9 @@ function App() {
         <Route/>
         <Route/>
       </Router> */}
+      <h1>
+        Hello world!
+      </h1>
     </div>
   );
 }
