@@ -13,16 +13,9 @@ function App() {
   }
 
   return (
-<<<<<<< HEAD
     <div className='App'onKeyDownCapture={keyDownHandler}>
        <Board/>
        <Status/>
-=======
-    <div>
-      <h1>
-        Hello world!
-      </h1>
->>>>>>> b53f8c7f9a9c8b1ccb87f95f8066f2926a845784
     </div>
   );
 }
