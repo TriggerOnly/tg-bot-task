@@ -1,13 +1,9 @@
-<<<<<<< HEAD
 import './App.css'
 import { useDispatch } from 'react-redux';
 import { saveKey } from './store/gameSlice';
 import { Board } from './components/Board/Board';
 import Status from './components/Status'
 import './App.css'
-=======
-
->>>>>>> b53f8c7f9a9c8b1ccb87f95f8066f2926a845784
 
 function App() {
   const dispatch = useDispatch()
