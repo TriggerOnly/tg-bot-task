@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
 const gameSlice = createSlice({
     name: 'game',
@@ -26,59 +26,65 @@ const gameSlice = createSlice({
         savedkey : 'd'
     },
     reducers: {
-        changeStatus (state) {
-            state.status = state.statusValues[state.status]
+        changeStatus(state) {
+            state.status = state.statusValues[state.status];
         },
-        moveSnake (state) {
-            if(state.status === "Restart")  return  
-
-            let {x, y}= state.snakeHead
-
-            switch(state.direction) {
-                case 'd': x = (x >= 9) ? 0 : x + 1; break
-                case 'a': x = (x <= 0) ? 9 : x - 1; break
-                case 's': y = (y >= 9) ? 0 : y + 1; break
-                case 'w': y = (y <= 0) ? 9 : y - 1; break
-                default: break
+        moveSnake(state) {
+            if (state.status === "Restart") return;
+        
+            // Устанавливаем направление перед движением
+            state.direction = state.savedkey; 
+        
+            let { x, y } = state.snakeHead;
+        
+            switch (state.direction) {
+                case 'd': x = (x >= 15) ? 0 : x + 1; break;
+                case 'a': x = (x <= 0) ? 15 : x - 1; break;
+                case 's': y = (y >= 15) ? 0 : y + 1; break;
+                case 'w': y = (y <= 0) ? 15 : y - 1; break;
+                default: break;
             }
-           
-            state.snakeHead = {x, y}
-            state.snake.push({x, y})
-            state.snake = state.snake.slice(-state.snakeSize)
-        },
-        checkApple (state) {
-            let {apple, snakeHead, snake} = state
+        
+            // Обновляем положение головы змеи
+            state.snakeHead = { x, y };
+            state.snake.push({ x, y });
+            state.snake = state.snake.slice(-state.snakeSize);
+        }
+        ,
+        checkApple(state) {
+            let { apple, snakeHead, snake } = state;
 
-            if(apple.x === snakeHead.x && apple.y === snakeHead.y) {
-                let isOnSnake = null
+            if (apple.x === snakeHead.x && apple.y === snakeHead.y) {
+                let isOnSnake;
                 do {
-                    apple.x = Math.floor(Math.random() * 10)
-                    apple.y = Math.floor(Math.random() * 10)
-                    isOnSnake = snake.find(s => s.x === apple.x && s.y === apple.y)
-                } while(isOnSnake)
-                state.apple = apple
-                state.snakeSize++
+                    apple.x = Math.floor(Math.random() * 16);
+                    apple.y = Math.floor(Math.random() * 16);
+                    isOnSnake = snake.find(s => s.x === apple.x && s.y === apple.y);
+                } while (isOnSnake);
+                state.apple = apple;
+                state.snakeSize++;
             }
         },
-        checkGameOver (state) {
-            let {x, y} = state.snakeHead
-            let snakeHeadless = state.snake.slice()
-            snakeHeadless.pop()
-            let bitedPlace = null
-            bitedPlace = snakeHeadless.find(s => s.x === x && s.y === y)
-            if (bitedPlace) state.status = "Restart"
+        checkGameOver(state) {
+            let { x, y } = state.snakeHead;
+            let snakeHeadless = state.snake.slice();
+            snakeHeadless.pop();
+            let bitedPlace = snakeHeadless.find(s => s.x === x && s.y === y);
+            if (bitedPlace) state.status = "Restart";
         },
-        saveKey (state, action) {
-            for(let [a, b] of state.stopKeyCombinations) {
-                if(a === state.direction && b === action.payload) return
+        saveKey(state, action) {
+            for(let[a, b] of state.stopKeyCombinations) {
+                if(a === state.direction && b === action.payload) return 
             }
             state.savedkey = action.payload
         },
-        setDirection (state, action) {
-            state.direction = state.savedkey
-        }
+        
+        setDirection(state) {
+            state.direction = state.savedkey;
+        },
+        
     }
-})
+});
 
 export const {
     changeStatus, 
@@ -87,5 +93,5 @@ export const {
     setDirection,
     checkApple,
     checkGameOver
-} = gameSlice.actions
-export const gameReducer = gameSlice.reducer
+} = gameSlice.actions;
+export const gameReducer = gameSlice.reducer;
