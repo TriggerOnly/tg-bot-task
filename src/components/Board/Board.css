@@ -1,6 +1,8 @@
 .Board {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    width: 100vw; /* Занимает всю ширину экрана */
+    max-width: 100vh; /* Ограничивает ширину высотой экрана, чтобы создать квадратную сетку */
 }
 
 .Square button {
@@ -10,5 +12,23 @@
     border-color: #6a6a6a;
     border-radius: 1vh;
     margin: 0.5vh;
-    
+}
+
+/* Медиазапросы для мобильных экранов */
+@media (max-width: 600px) {
+    .Square button {
+        width: 8vw; /* Изменяем на проценты экрана для адаптивности */
+        height: 8vw;
+        margin: 0.3vw;
+        border-radius: 1vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .Square button {
+        width: 9vw;
+        height: 9vw;
+        margin: 0.2vw;
+        border-radius: 0.8vw;
+    }
 }
