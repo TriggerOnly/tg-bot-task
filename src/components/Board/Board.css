@@ -1,34 +1,36 @@
 .Board {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    width: 100vw; /* Занимает всю ширину экрана */
-    max-width: 100vh; /* Ограничивает ширину высотой экрана, чтобы создать квадратную сетку */
+    grid-template-columns: repeat(16, 0fr);
+    width: 90vw;
+    max-width: 90vh;
+    margin: 1vh;
 }
 
-.Square button {
-    width: 6vh;
-    height: 6vh;
-    background-color: #1b1b1b;
-    border-color: #6a6a6a;
-    border-radius: 1vh;
-    margin: 0.5vh;
+/* Адаптивные стили */
+@media (max-width: 800px) {
+    .Board {
+        width: 100vw;
+        max-width: 100vw;
+    }
+    .Square button {
+        width: 3vw;
+        height: 3vw;
+        border-radius: 0.5vw;
+    }
 }
 
-/* Медиазапросы для мобильных экранов */
 @media (max-width: 600px) {
     .Square button {
-        width: 8vw; /* Изменяем на проценты экрана для адаптивности */
-        height: 8vw;
-        margin: 0.3vw;
-        border-radius: 1vw;
+        width: 4vw;
+        height: 4vw;
+        border-radius: 0.5vw;
     }
 }
 
 @media (max-width: 400px) {
     .Square button {
-        width: 9vw;
-        height: 9vw;
-        margin: 0.2vw;
-        border-radius: 0.8vw;
+        width: 5vw;
+        height: 5vw;
+        border-radius: 0.4vw;
     }
 }
