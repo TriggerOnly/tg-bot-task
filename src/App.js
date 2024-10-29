@@ -13,10 +13,10 @@ function App() {
   }
 
   return (
-    <div className='App'onKeyDownCapture={keyDownHandler}>
-       <Board/>
-       <Status/>
-    </div>
+    <div className='App' onKeyDownCapture={keyDownHandler} tabIndex="0">
+     <Status/>
+     <Board/>
+  </div>
   );
 }
 
