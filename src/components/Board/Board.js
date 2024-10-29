@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Square from '../Square/Square'
-import { saveKey, setDirection } from '../gameSlice'
+import { saveKey, setDirection } from '../../store/gameSlice'
 import './Board.css'
 
 export const Board = () => {
