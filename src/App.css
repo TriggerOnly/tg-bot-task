@@ -1,0 +1,21 @@
+.App {
+    text-align: center;
+    background-color: rgb(70, 70, 70);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.Status .start-button {
+    background-color: rgb(70, 70, 70);
+    border-color: white;
+    color: white;
+    font-size: 5vh;
+    padding: 2vh 5vh;
+    border-radius: 1vh;
+}
+
