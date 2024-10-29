@@ -5,6 +5,14 @@ import { Board } from './components/Board/Board';
 import Status from './components/Status'
 import './App.css'
 
+document.addEventListener(
+  'touchmove',
+  function (event) {
+    event.preventDefault();
+  },
+  { passive: false }
+);
+
 function App() {
   const dispatch = useDispatch()
 
