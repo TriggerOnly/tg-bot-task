@@ -18,6 +18,7 @@ export const checkAppleThunk = createAsyncThunk(
                     x: Math.floor(Math.random() * 10),
                     y: Math.floor(Math.random() * 10)
                 };
+                
                 isOnSnake = snake.some(s => s.x === apple.x && s.y === apple.y);   
             } while (isOnSnake);
             
