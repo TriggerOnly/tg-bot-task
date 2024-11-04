@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { increaseSnakeSize } from "./SnakeSlice";
+import { increaseSnakeSize } from "./SnakeSLice";
 import { changeScore } from "./GameSlice";
 
 export const checkAppleThunk = createAsyncThunk(
