@@ -4,16 +4,15 @@ import { changeScore } from "./GameSlice";
 
 const generateNewApplePosition = (snake) => {
     let newApplePosition;
-    let isOnSnake;
+    let isOnSnake = true;
     
-    do {
+    while (isOnSnake) {
         newApplePosition = {
             x: Math.floor(Math.random() * 10),
             y: Math.floor(Math.random() * 10)
         };
-        
         isOnSnake = snake.some(s => s.x === newApplePosition.x && s.y === newApplePosition.y);
-    } while (isOnSnake);
+    }
     
     return newApplePosition;
 };
