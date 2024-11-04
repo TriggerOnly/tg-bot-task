@@ -1,21 +1,7 @@
+/* eslint-disable no-loop-func */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { increaseSnakeSize } from "./SnakeSLice";
 import { changeScore } from "./GameSlice";
-
-const generateNewApplePosition = (snake) => {
-    let newApplePosition;
-    let isOnSnake = true;
-    
-    while (isOnSnake) {
-        newApplePosition = {
-            x: Math.floor(Math.random() * 10),
-            y: Math.floor(Math.random() * 10)
-        };
-        isOnSnake = snake.some(s => s.x === newApplePosition.x && s.y === newApplePosition.y);
-    }
-    
-    return newApplePosition;
-};
 
 export const checkAppleThunk = createAsyncThunk(
     "apple/checkAppleThunk",
@@ -26,7 +12,16 @@ export const checkAppleThunk = createAsyncThunk(
         let apple = state.apple.apple;
         
         if (apple.x === snakeHead.x && apple.y === snakeHead.y) {
-            apple = generateNewApplePosition(snake);
+            let isOnSnake;
+            
+            do {
+                apple = {
+                    x: Math.floor(Math.random() * 10),
+                    y: Math.floor(Math.random() * 10)
+                };
+                
+                isOnSnake = snake.some(s => s.x === apple.x && s.y === apple.y);   
+            } while (isOnSnake);
             
             dispatch(increaseSnakeSize());
             dispatch(changeScore());
