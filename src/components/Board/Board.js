@@ -88,7 +88,7 @@ const Board = () => {
         <div
             className="Board"
             onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
+            onTouchMove={handleTouchMove} 
             onTouchEnd={handleTouchEnd}
         >
             {squares.map((square) => (
