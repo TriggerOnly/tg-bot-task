@@ -1,6 +1,6 @@
 import './App.css'
 import { useDispatch } from 'react-redux';
-import { saveKey } from './store/gameSlice';
+import { saveKey } from './store/GameSlice';
 import { Board } from './components/Board/Board';
 import Status from './components/Status'
 
