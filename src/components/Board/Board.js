@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Square from '../Square/Square';
-<<<<<<< HEAD
-import { saveKey, setDirection } from '../../store/gameSlice';
-import './Board.css';
-
-export const Board = () => {
-    const dispatch = useDispatch();
-    const direction = useSelector(state => state.game.direction);
-    const stopKeyCombinations = useSelector(state => state.game.stopKeyCombinations);
-=======
 import { saveKey, setDirection } from '../../store/SnakeSLice';
 import './Board.css';
 
@@ -17,8 +8,6 @@ const Board = () => {
     const dispatch = useDispatch();
     const direction = useSelector(store => store.snake.direction); 
     const stopKeyCombinations = useSelector(store => store.snake.stopKeyCombinations); 
->>>>>>> 075ceef (Initial commit)
-
     const [touchStart, setTouchStart] = useState({ x: 0, y: 0 });
     const [touchEnd, setTouchEnd] = useState({ x: 0, y: 0 });
 
@@ -74,11 +63,7 @@ const Board = () => {
                     newDirection = 'd';
                     break;
                 default:
-<<<<<<< HEAD
-                    return; // Игнорируем все другие клавиши
-=======
-                    return; 
->>>>>>> 075ceef (Initial commit)
+                    return;
             }
 
             if (!stopKeyCombinations.some(([a, b]) => (a === direction && b === newDirection) || (b === direction && a === newDirection))) {
@@ -112,8 +97,5 @@ const Board = () => {
         </div>
     );
 };
-<<<<<<< HEAD
-=======
 
 export default Board
->>>>>>> 075ceef (Initial commit)
