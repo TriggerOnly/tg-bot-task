@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-<<<<<<< HEAD
 import { configureStore } from '@reduxjs/toolkit';
 import { gameReducer } from './store/gameSlice';
 import {Provider} from "react-redux"
@@ -11,7 +10,6 @@ const store = configureStore({
     game: gameReducer
   }
 })
-=======
 import './App.css';
 import {configureStore} from '@reduxjs/toolkit';
 import {GameReducer} from './store/GameSlice';
@@ -26,20 +24,16 @@ const store = configureStore({
     apple: AppleReducer
   }
 });
->>>>>>> 075ceef (Initial commit)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-<<<<<<< HEAD
       <App/>
     </Provider>      
   </React.StrictMode>
 );
-=======
       <App />
     </Provider>
   </React.StrictMode>
 );
->>>>>>> 075ceef (Initial commit)
