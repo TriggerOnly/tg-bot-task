@@ -19,3 +19,39 @@
     border-radius: 1vh;
 }
 
+body { 
+  overscroll-behavior-y: none;
+}
+
+.App {
+  text-align: center;
+  background-color: rgb(70, 70, 70);
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  gap: 20px; 
+}
+
+.Status .Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.Status .start-button {
+  background-color: rgb(70, 70, 70);
+  border-color: white;
+  color: white;
+  font-size: 5vh;
+  padding: 2vh 5vh;
+  border-radius: 1vh;
+}
