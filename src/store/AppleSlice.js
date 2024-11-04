@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { increaseSnakeSize } from "./SnakeSLice";
+import { increaseSnakeSize } from "./SnakeSlice";
 import { changeScore } from "./GameSlice";
 
 export const checkAppleThunk = createAsyncThunk(
@@ -8,23 +8,24 @@ export const checkAppleThunk = createAsyncThunk(
         const state = getState();
         const snakeHead = state.snake.snakeHead;
         const snake = state.snake.snake;
-        let apple = state.apple.apple
+        let apple = state.apple.apple;
         
         if (apple.x === snakeHead.x && apple.y === snakeHead.y) {
-            let isOnSnake = null;
+            let isOnSnake;
             
             do {
                 apple = {
                     x: Math.floor(Math.random() * 10),
                     y: Math.floor(Math.random() * 10)
-                }
-                isOnSnake = snake.find(s => s.x === apple.x && s.y === apple.y);   
+                };
+                isOnSnake = snake.some(s => s.x === apple.x && s.y === apple.y);   
             } while (isOnSnake);
+            
             dispatch(increaseSnakeSize());
-            dispatch(changeScore())
+            dispatch(changeScore());
             return apple;
         }
-        return null
+        return null;
     }
 );
 
@@ -44,4 +45,3 @@ const AppleSlice = createSlice({
 });
 
 export const AppleReducer = AppleSlice.reducer;
- 
