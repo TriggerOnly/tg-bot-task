@@ -1,18 +1,9 @@
 .Board {
     display: grid;
     grid-template-columns: repeat(16, 0fr);
-<<<<<<< HEAD
-    width: 90vw;
-    max-width: 90vh;
     margin: 1vh;
 }
 
-/* Адаптивные стили */
-=======
-    margin: 1vh;
-}
-
->>>>>>> 075ceef (Initial commit)
 @media (max-width: 800px) {
     .Board {
         width: 100vw;
