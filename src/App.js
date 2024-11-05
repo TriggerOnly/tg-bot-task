@@ -3,14 +3,16 @@ import { useDispatch } from 'react-redux';
 import { fetchAuth } from './redux/slices/Auth';
 import {Routes, Route} from 'react-router-dom'
 import Snake from './pages/Snake';
+import useTelegram from './hooks/useTelegram';
 
 function App() {
+  const {username, userId} = useTelegram()
   const dispatch = useDispatch();
 
   useEffect(() => {
     const userParams = {
-      tgId: "example_tgId",   // добавьте сюда реальные данные
-      username: "example_user" 
+      tgId: username, 
+      username: userId
     };
     dispatch(fetchAuth(userParams));
   }, []);
