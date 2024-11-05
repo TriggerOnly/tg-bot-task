@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Square from '../Square/Square';
-import { saveKey, setDirection } from '../../store/SnakeSLice';
+import { saveKey, setDirection } from '../../redux/store/SnakeSLice';
 import './Board.css';
 
 const Board = () => {

@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { changeStatus, checkGameover } from '../store/GameSlice'
-import { moveSnake, setDirection } from '../store/SnakeSLice';
-import { checkAppleThunk } from '../store/AppleSlice';
+import { changeStatus, checkGameover } from '../redux/store/GameSlice'
+import { moveSnake, setDirection } from '../redux/store/SnakeSLice';
+import { checkAppleThunk } from '../redux/store/AppleSlice';
 import { useEffect, useRef } from 'react';
 import '../App.css'
 

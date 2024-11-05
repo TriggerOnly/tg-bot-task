@@ -3,6 +3,21 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { increaseSnakeSize } from "./SnakeSLice";
 import { changeScore } from "./GameSlice";
 
+const generateRandomPosition = () => ({
+    x: Math.floor(Math.random() * 10),
+    y: Math.floor(Math.random() * 10),
+});
+
+const generateNewApplePosition = (snake) => {
+    let newApplePosition = generateRandomPosition();
+
+    while (snake.some(s => s.x === newApplePosition.x && s.y === newApplePosition.y)) {
+        newApplePosition = generateRandomPosition();
+    }
+    
+    return newApplePosition;
+};
+
 export const checkAppleThunk = createAsyncThunk(
     "apple/checkAppleThunk",
     async (_, { dispatch, getState }) => {
@@ -12,17 +27,8 @@ export const checkAppleThunk = createAsyncThunk(
         let apple = state.apple.apple;
         
         if (apple.x === snakeHead.x && apple.y === snakeHead.y) {
-            let isOnSnake;
-            
-            do {
-                apple = {
-                    x: Math.floor(Math.random() * 10),
-                    y: Math.floor(Math.random() * 10)
-                };
-                
-                isOnSnake = snake.some(s => s.x === apple.x && s.y === apple.y);   
-            } while (isOnSnake);
-            
+            apple = generateNewApplePosition(snake);
+    
             dispatch(increaseSnakeSize());
             dispatch(changeScore());
             return apple;
