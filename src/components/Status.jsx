@@ -10,6 +10,7 @@ function Status() {
     const score = useSelector(store => store.game.score)
     const snakeHead = useSelector(state => state.snake.snakeHead);
     const snake = useSelector(state => state.snake.snake);
+    const maxScore = useSelector(store => store.game.maxScore)
     const dispatch = useDispatch();
 
     let timer = useRef(null);
@@ -38,6 +39,7 @@ function Status() {
 
     const clickHandler = () => {
         if (status === 'Restart') {
+
             window.location.reload();
             return;
         }
@@ -54,7 +56,8 @@ function Status() {
 
     return (
         <div className='Header'>
-            <h3>{score}</h3>
+            <h3>Текущий счёт: {score}</h3>
+            <h3>Рекорд: {maxScore}</h3>
             <div className="Status">
                 <button className="start-button" onClick={clickHandler}>{status}</button>
             </div>

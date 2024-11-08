@@ -1,5 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+const checkMaxScore = (score) => {
+  const maxScore = localStorage.getItem('maxScore') || 0;
+  if (score > maxScore) {
+      localStorage.setItem('maxScore', score); // Сохраняем новый рекорд в localStorage
+      return score; // Новый рекорд
+  }
+  return maxScore;
+};
+
 export const checkGameover = createAsyncThunk(
   'game/checkGameover',
   async (_, { getState }) => {
@@ -28,7 +37,8 @@ const GameSlice = createSlice({
       Pause: 'Resume',
       Resume: 'Pause',
     },
-    score: 0
+    score: 0,
+    maxScore: localStorage.getItem('maxScore') || 0
   },
   reducers: {
     changeStatus(state) {
@@ -36,13 +46,19 @@ const GameSlice = createSlice({
     },
     changeScore(state) {
       state.score++
-      console.log(state.score)
-    }
+      
+      const newMaxScore = checkMaxScore(state.score);
+      state.maxScore = newMaxScore;
+    },
+    resetScore(state) {
+      state.score = 0;
+  }
   },
   extraReducers: (builder) => {
     builder.addCase(checkGameover.fulfilled, (state, action) => {
       if (action.payload === 'Restart') {
         state.status = 'Restart';
+        state.score = 0
       }
     });
   }

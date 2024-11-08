@@ -1,21 +1,29 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchAuth } from './redux/slices/Auth';
+import { fetchLoginAndRegister, fetchAuth } from './redux/slices/Auth';
 import {Routes, Route} from 'react-router-dom'
 import Snake from './pages/Snake';
 import useTelegram from './hooks/useTelegram';
 
 function App() {
-  const {username, userId} = useTelegram()
+  const {userId} = useTelegram()
   const dispatch = useDispatch();
 
+  //Регистрация и вход по Id в Telegram
   useEffect(() => {
     const userParams = {
-      tgId: username, 
-      username: userId
+      tgId: userId
     };
-    dispatch(fetchAuth(userParams));
-  }, []);
+    dispatch(fetchLoginAndRegister(userParams));
+  }, [userId, dispatch]);
+
+  // Автоматический вход
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        dispatch(fetchAuth());
+    }
+}, [dispatch]);
 
   return (
     <>
